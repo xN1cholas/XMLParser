@@ -1,0 +1,104 @@
+public class HelloWorld{
+
+     public static void main(String []args)
+     {
+        //System.out.println(MinSplit(69));
+        //System.out.println(IsProperly("()()(()"));
+        //System.out.println(CountVariants(5));
+        System.out.println(isPalindrome("kik"));
+     }
+     
+     // First task
+     static boolean isPalindrome(String text)
+     {
+        String clean = text.replaceAll("\\s+", "").toLowerCase();
+        int length = clean.length();
+        int forward = 0;
+        int backward = length - 1;
+            while (backward > forward) 
+            {
+        char forwardChar = clean.charAt(forward++);
+        char backwardChar = clean.charAt(backward--);
+        if (forwardChar != backwardChar)
+            
+            return false;
+            }
+            return true;
+     }
+     
+    
+     
+     // Second task
+     static int MinSplit(int amount) {
+        int numberOfConis = 0;
+        numberOfConis = (numberOfConis 
+                    + (amount / 50));
+        amount = (amount % 50);
+        numberOfConis = (numberOfConis 
+                    + (amount / 20));
+        amount = (amount % 20);
+        numberOfConis = (numberOfConis 
+                    + (amount / 10));
+        amount = (amount % 10);
+        numberOfConis = (numberOfConis 
+                    + (amount / 5));
+        amount = (amount % 5);
+        numberOfConis = (numberOfConis 
+                    + (amount / 1));
+        amount = (amount % 1);
+        return numberOfConis;
+    }
+    
+    // Fourth task
+    static boolean IsProperly(String sequence) {
+        
+        if (sequence == "" || sequence.length() < 2) {
+            return false;
+        }
+        
+        int j = (sequence.length() - 1);
+        if ((sequence.charAt(0) == ')')) {
+            return false;
+        }
+        
+        if ((sequence.charAt(j) == '(')) {
+            return false;
+        }
+        
+        j = (j - 1);
+        for (int i = 1; i < sequence.length() - 1; i++) {
+            if (sequence.charAt(i) == '(' && sequence.charAt(j) == '(') {
+                return false;
+            }
+            else if (sequence.charAt(i) == ')' && sequence.charAt(j) == ')')
+            {
+                return false;
+            }
+            
+            j--;
+        }
+        
+        return true;
+    }
+    
+    // Fifth task
+    static int CountVariants(int stairCount) {
+        int a = 0;
+        int b = 1;
+        int c = 0;
+        
+        if ((stairCount == 0)) {
+            return a;
+        }
+        
+        for (int i = 1; (i <= stairCount); i++) {
+            c = (a + b);
+            a = b;
+            b = c;
+        }
+        
+        return b;
+    }
+ 
+
+}
